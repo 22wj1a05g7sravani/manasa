@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Recipe Search</title>
+</head>
+<body>
+
+    <h1>Recipe Search</h1>
+    <input type="text" id="search" placeholder="Search for a recipe" onkeyup="searchRecipe()">
+    
+    <ul id="recipe-list">
+        <li data-name="Spaghetti Bolognese">Spaghetti Bolognese</li>
+        <li data-name="Chicken Curry">Chicken Curry</li>
+        <li data-name="Caesar Salad">Caesar Salad</li>
+        <li data-name="Grilled Cheese">Grilled Cheese</li>
+        <li data-name="Vegetable Stir Fry">Vegetable Stir Fry</li>
+        <li data-name="Beef Tacos">Beef Tacos</li>
+    </ul>
+
+    <script>
+        function searchRecipe() {
+            var query = document.getElementById('search').value.toLowerCase();
+            var recipes = document.querySelectorAll('#recipe-list li');
+            
+            recipes.forEach(function(recipe) {
+                var recipeName = recipe.getAttribute('data-name').toLowerCase();
+                if (recipeName.includes(query)) {
+                    recipe.style.display = 'list-item';  // Show matching recipe
+                } else {
+                    recipe.style.display = 'none';  // Hide non-matching recipe
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
